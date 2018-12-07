@@ -26,14 +26,10 @@ The second method **replaceProfileValues()** accepts a Map of type <String, Valu
 
 The values of the  keys to be be fetched are hard coded in this sample and will be replaced by the user values fetched from the custom config server.
 
-Once the code to connect to the config server and the code for retrieving the values of the corresponding keys is ready, create a JAR out of this package.
-
-Unzip the runtime zip for bwce 2.4.2 and then go to tibco.home/bwce/2.4/system/shared. Add here, the JAR with the custom config mangement code i.e. com.tibco.bwce.profile.sample.*.jar in this case. Once the JAR is added in the runtime zip, zip it back. 
+Once the code to connect to the config server and the code for retrieving the values of the corresponding keys is ready, create a JAR out of this package. Unzip the runtime zip for bwce 2.4.2 and then go to tibco.home/bwce/2.4/system/shared. Add here, the JAR with the custom config mangement code i.e. com.tibco.bwce.profile.sample.*.jar in this case. Once the JAR is added in the runtime zip, zip it back. 
 
 The next step is to make changes in the setup.sh script present in the scripts folder in the location where bwce-docker repo is cloned.
 
-Go to line number 419 in the **setup.sh** script. The classpath for java is define here. 
-
-Add the name of the new package with the custom config management code in the classpath and also replace the name of the main class with the newly created main class .i.e. if the name of the previous main class was Resolver and was accessed as com.tibco.bwce.profile.resolver.Resolver, then replace the name of the main class Resolver with the new main class CustomConfigManagement as com.tibco.bwce.profile.sample.CustomConfigManagement in the docker script setup.sh.
+Go to line number 419 in the **setup.sh** script. The classpath for java is define here. Add the name of the new package with the custom config management code in the classpath and also replace the name of the main class with the newly created main class .i.e. if the name of the previous main class was Resolver and was accessed as com.tibco.bwce.profile.resolver.Resolver, then replace the name of the main class Resolver with the new main class CustomConfigManagement as com.tibco.bwce.profile.sample.CustomConfigManagement in the docker script setup.sh.
 
 Save the changes made and use the new runtime zip and the new setup.sh script to deploy applications on docker and connect to a custom config server of your choice.
